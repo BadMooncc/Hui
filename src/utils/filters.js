@@ -49,11 +49,30 @@ const filters = {
         val = '' + val
         return val.substr(0, 3) + '****' + val.substr(7)
       },
-      'formatMoney': function (val) {
-
+      'formatMoney': function (val, types) {
+        if (typeof types !== 'string') {
+          try {
+            var err = new Error('电话号码格式错误！')
+            throw err
+          } catch (err) {
+            console.error(err)
+          }
+        }
+        return types + val
       },
       'formatIdCard': function (val) {
-
+        if (typeof val === 'number') {
+          console.warn('身份证号必须为string！')
+          return
+        }
+        return val.substr(0, 4) + '*******' + val.substr(14, val.length)
+      },
+      'formatBankCard': function (val) {
+        if (typeof val === 'number') {
+          console.warn('银行卡号必须为string！！')
+          return
+        }
+        return val.substr(0, 4) + ' **** **** **** ' + val.substr(val.length - 4, val.length)
       },
       'toLowerCase': function (val) {
         return val.toLowerCase()
