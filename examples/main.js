@@ -4,8 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Hui from '../src/index'
-import { filters } from '../src/utils/index'
+import { filters, directives } from '../src/utils/index'
 Vue.use(filters)
+Vue.use(directives)
 Vue.config.productionTip = false
 Vue.use(Hui)
 /* eslint-disable no-new */
